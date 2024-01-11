@@ -32,9 +32,9 @@ def monitor_host(host, sender_email, password, receiver_email):
         time.sleep(60)
 
 # User inputs for email credentials and host to monitor
-sender_email = input("Enter the sender email (for notifications): ")
-password = input("Enter the password for the sender email: ")
-receiver_email = input("Enter the receiver email (admin email): ")
-host = input("Enter the host to monitor (e.g., 'google.com'): ")
+sender_email = input("Enter the sender email: ")
+password = input("Enter the app password: ")
+receiver_email = input("Enter the receiver email: ")
+host = input("Enter the host to monitor: ")
 
 monitor_host(host, sender_email, password, receiver_email)
