@@ -34,6 +34,17 @@ def decrypt_file(file_path):
     decrypted_data = cipher_suite.decrypt(encrypted_data)
     with open(file_path, 'wb') as file:
         file.write(decrypted_data)
+def encrypt_directory(directory_path):
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            encrypt_file(file_path)
+
+def decrypt_directory(directory_path):
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            decrypt_file(file_path)
 
 def encrypt_message(message):
     cipher_suite = Fernet(key)  # Use the already loaded key
@@ -46,31 +57,38 @@ def decrypt_message(ciphertext):
     return decrypted_message
 
 def main():
-    mode = input("Select a mode:\n1. Encrypt a file\n2. Decrypt a file\n3. Encrypt a message\n4. Decrypt a message\n")
+    mode = input("Select a mode:\n1. Encrypt a file\n2. Decrypt a file\n3. Encrypt a message\n4. Decrypt a message\n5. Encrypt a directory\n6. Decrypt a directory\n")
     
-    if mode == '1':
-        file_path = input("Enter the filepath to encrypt: ")
-        encrypt_file(file_path)
-        print("File encrypted successfully.")
+    if mode in ['1', '2', '5', '6']:
+        path = input("Enter the filepath or directory path: ")
+        if not os.path.exists(path):
+            print("The specified path does not exist.")
+            return
 
-    elif mode == '2':
-        file_path = input("Enter the filepath to decrypt: ")
-        decrypt_file(file_path)
-        print("File decrypted successfully.")
+        if mode == '1':
+            encrypt_file(path)
+            print("File encrypted successfully.")
+        elif mode == '2':
+            decrypt_file(path)
+            print("File decrypted successfully.")
+        elif mode == '5':
+            encrypt_directory(path)
+            print("Directory encrypted successfully.")
+        elif mode == '6':
+            decrypt_directory(path)
+            print("Directory decrypted successfully.")
 
-    elif mode == '3':
-        message = input("Enter the message to encrypt: ")
-        encrypted_message = encrypt_message(message)
-        print(f"Encrypted Message: {encrypted_message}")
-
-    elif mode == '4':
-        ciphertext = input("Enter the ciphertext to decrypt: ")
-        decrypted_message = decrypt_message(ciphertext)
-        print(f"Decrypted Message: {decrypted_message}")
+    elif mode in ['3', '4']:
+        message = input("Enter the message: ")
+        if mode == '3':
+            encrypted_message = encrypt_message(message)
+            print(f"Encrypted Message: {encrypted_message}")
+        elif mode == '4':
+            decrypted_message = decrypt_message(message)
+            print(f"Decrypted Message: {decrypted_message}")
 
     else:
         print("Invalid mode selected.")
 
 if __name__ == "__main__":
     main()
-
