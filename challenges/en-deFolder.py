@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# Script:                       Ops Challenge 07 - Folder Encryption Script
+# Author:                       Thierry Tran
+# Date of latest revision:      01/17/2024
+# Purpose:                      Encrypt and Decrypt Folder in Python
 from cryptography.fernet import Fernet
 import os
 
