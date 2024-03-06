@@ -14,7 +14,7 @@ type(ip_addr)
 resp = input("""\nSelect scan to execute:
                 1) SYN ACK Scan
                 2) UDP Scan
-                3)              \n""") ### TODO: Select what your third scan type will be
+                3) Intense Scan\n""") ### TODO: Select what your third scan type will be
 print("You have selected option: ", resp)
 
 range = '1-50'
