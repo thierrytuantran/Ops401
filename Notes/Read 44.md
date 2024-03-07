@@ -1,0 +1,2 @@
+1. Explain what Metasploit is using non-technical terms.
+     * Metasploit is like a toolbox for hackers, but it's also used by cybersecurity experts to protect against attacks. It helps them find weaknesses in computer systems so they can fix them before bad guys exploit them. With Metasploit, you can think of it like having special keys to unlock doors in a building, but instead of doors, it's vulnerabilities in computer networks. It's become really popular because it makes hacking much easier and faster, sort of like having a cheat code for video games.
